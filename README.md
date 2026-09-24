@@ -1,3 +1,5 @@
+Proposal Link: https://docs.google.com/document/d/1rLOpRcoI3tGZ0R_yEIqI-pBnMhZXnYxZDDIrKRrfSYg/edit?tab=t.0
+
 Ryan Jolly
 
 **Contributions** 
