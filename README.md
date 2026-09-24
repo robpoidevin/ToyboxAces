@@ -1,2 +1,4 @@
-READ ME NOWWWWW
+Ryan Jolly
+Rob Poidevin
+Liam Toews
 
