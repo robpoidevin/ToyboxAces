@@ -111,6 +111,8 @@ Shader "Custom/LightToggle"
                 //get light info
                 Light mainLight = GetMainLight();
                 half3 lightDir = normalize(mainLight.direction);
+                half3 extraLight = half3(0,0,0);
+                Light additionalLight = GetAdditionalLight(0, IN.positionWS);
                 
                 switch (_CurrentLightingMode)
                 {
