@@ -745,7 +745,11 @@ Light:
   m_Enabled: 1
   serializedVersion: 13
   m_Type: 2
+<<<<<<< Updated upstream
   m_Color: {r: 0, g: 0, b: 0, a: 1}
+=======
+  m_Color: {r: 0.836478, g: 0.58836997, b: 0.30776066, a: 1}
+>>>>>>> Stashed changes
   m_Intensity: 1
   m_Range: 1
   m_SpotAngle: 30
