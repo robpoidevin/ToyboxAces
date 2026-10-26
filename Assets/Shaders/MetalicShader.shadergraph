@@ -333,8 +333,8 @@
     ],
     "m_VertexContext": {
         "m_Position": {
-            "x": 942.6666870117188,
-            "y": 250.66665649414063
+            "x": 917.9998779296875,
+            "y": 128.6666717529297
         },
         "m_Blocks": [
             {
@@ -350,8 +350,8 @@
     },
     "m_FragmentContext": {
         "m_Position": {
-            "x": 942.6666870117188,
-            "y": 450.6666564941406
+            "x": 917.9998779296875,
+            "y": 328.6666564941406
         },
         "m_Blocks": [
             {
@@ -577,10 +577,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 748.6666259765625,
-            "y": 511.99993896484375,
+            "x": 744.0,
+            "y": 449.9999694824219,
             "width": 114.66668701171875,
-            "height": 36.0
+            "height": 35.999969482421875
         }
     },
     "m_Slots": [
@@ -2475,10 +2475,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 776.6666259765625,
-            "y": 458.0,
+            "x": 744.0,
+            "y": 369.3332824707031,
             "width": 106.66668701171875,
-            "height": 35.99993896484375
+            "height": 36.0
         }
     },
     "m_Slots": [
@@ -2664,7 +2664,7 @@
     "m_PerRendererData": false,
     "m_customAttributes": [],
     "m_Value": 1.0,
-    "m_FloatType": 0,
+    "m_FloatType": 1,
     "m_LiteralFloatMode": false,
     "m_RangeValues": {
         "x": 0.0,

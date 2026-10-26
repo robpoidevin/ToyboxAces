@@ -26,8 +26,10 @@ Shader "Custom/LightToggle"
 
     SubShader
     {
-        Tags { "RenderType" = "Opaque" "RenderPipeline" = "UniversalPipeline" }
+        Tags { "RenderType" = "Opaque" "RenderPipeline" = "UniversalPipeline"}
 
+        UsePass "Universal Render Pipeline/Lit/ShadowCaster"
+        
         Pass
         {
             HLSLPROGRAM
@@ -40,6 +42,8 @@ Shader "Custom/LightToggle"
             
             //for additional lights alongside main light
             #pragma multi_compile _ _ADDITIONAL_LIGHTS
+            #pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOW_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
+            #pragma multi_compile _ _ADDITIONAL_LIGHT_SHADOWS
 
             struct Attributes
             {
@@ -58,6 +62,7 @@ Shader "Custom/LightToggle"
                 float3 positionWS: TEXCOORD2;
                 float3 biTangentWS : TEXCOORD4;
                 float3 viewDirWS : TEXCOORD5;
+                float4 shadowCoord : TEXCOORD6;
             };
 
             TEXTURE2D(_DiffuseMap);
@@ -89,6 +94,11 @@ Shader "Custom/LightToggle"
                 OUT.tangentWS = TransformObjectToWorldNormal(IN.tangentOS.xyz);
                 OUT.biTangentWS = cross(OUT.normalWS, OUT.tangentWS) * IN.tangentOS.w;
                 OUT.viewDirWS = normalize(GetCameraPositionWS() - OUT.positionWS);
+                
+                //shadow stuff
+       
+                OUT.shadowCoord = TransformWorldToShadowCoord(TransformObjectToWorld(IN.positionOS));
+                
                 OUT.uv = IN.uv;
                 
                 return OUT;
@@ -105,24 +115,28 @@ Shader "Custom/LightToggle"
                 half3x3 TBN = half3x3(IN.tangentWS, IN.biTangentWS, IN.normalWS);
                 half3 normalWS = normalize(mul(normalTS, TBN));
                 
-                half colorMultiplier = 1;
-                half colorAddition = 0;
+                half3 colorMultiplier = 1;
+                half3 colorAddition = 0;
                 
                 //get light info
-                Light mainLight = GetMainLight();
+                Light mainLight = GetMainLight(IN.shadowCoord);
                 half3 lightDir = normalize(mainLight.direction);
-                half3 extraLight = half3(0,0,0);
-                Light additionalLight = GetAdditionalLight(0, IN.positionWS);
+                half4 shadowMask = half4(1,1,1,1);
+                Light additionalLight = GetAdditionalLight(0, IN.positionWS, shadowMask);
+                half3 addedLightDir = normalize(additionalLight.direction);
+                
                 
                 switch (_CurrentLightingMode)
                 {
                 //diffuse lighting
                 case 2:
                     {
-                        half NdotL = saturate(dot(normalWS, lightDir));
+                        half3 NdotL = saturate(dot(normalWS, lightDir)) * mainLight.color.rgb;
+                        half addedNdotL = saturate(dot(normalWS, addedLightDir)) * additionalLight.color.rgb;
                         //make shadows less dark
                         
-                        colorMultiplier = max(NdotL * _DiffuseMultiplier, 0.2);
+                        colorMultiplier = max(NdotL * _DiffuseMultiplier * mainLight.shadowAttenuation, 0.2);
+                        colorMultiplier += addedNdotL * _DiffuseMultiplier * mainLight.shadowAttenuation;
                         break;
                     }
                 //specular lighting
@@ -132,7 +146,13 @@ Shader "Custom/LightToggle"
                         half3 viewDir = normalize(IN.viewDirWS);
                         half specFactor = pow(saturate(dot(reflectDir, viewDir)), _Shininess);
                         half3 specular = _SpecColor * specFactor;
-                        colorAddition += specular;
+                        
+                        half3 reflectDir2 = reflect(-addedLightDir, normalWS);
+                        half3 viewDir2 = normalize(IN.viewDirWS);
+                        half specFactor2 = pow(saturate(dot(reflectDir2, viewDir2)), _Shininess);
+                        half3 specular2 = _SpecColor * specFactor2;
+                        
+                        colorAddition = colorAddition + specular * mainLight.shadowAttenuation + specular2 * additionalLight.shadowAttenuation;
                         break;
                     }
                 //ambient lighting
@@ -144,35 +164,52 @@ Shader "Custom/LightToggle"
                 //all lighting
                 case 5:
                     {
-                    half NdotL = saturate(dot(normalWS, lightDir));
-                    colorMultiplier = NdotL * _DiffuseMultiplier;
+                        half3 NdotL = saturate(dot(normalWS, lightDir)) * mainLight.color.rgb;
+                        half addedNdotL = saturate(dot(normalWS, addedLightDir)) * additionalLight.color.rgb;
+                        //make shadows less dark
+                        
+                        colorMultiplier = max(NdotL * _DiffuseMultiplier * mainLight.shadowAttenuation, 0.2);
+                        colorMultiplier += addedNdotL * _DiffuseMultiplier * additionalLight.shadowAttenuation;
                         
                     colorAddition += saturate(SampleSH(normalWS) * _AmbientMultiplier);
                         
-                    half3 reflectDir = reflect(-lightDir, normalWS);
+                        half3 reflectDir = reflect(-lightDir, normalWS);
                         half3 viewDir = normalize(IN.viewDirWS);
                         half specFactor = pow(saturate(dot(reflectDir, viewDir)), _Shininess);
                         half3 specular = _SpecColor * specFactor;
-                        colorAddition = (colorAddition + specular) / 2;
+                        
+                        half3 reflectDir2 = reflect(-addedLightDir, normalWS);
+                        half3 viewDir2 = normalize(IN.viewDirWS);
+                        half specFactor2 = pow(saturate(dot(reflectDir2, viewDir2)), _Shininess);
+                        half3 specular2 = _SpecColor * specFactor2;
+                        
+                        colorAddition = colorAddition + specular * mainLight.shadowAttenuation + specular2 * additionalLight.shadowAttenuation;
                         
                     break;
                     }
            
                 //all lighting + effect
                 case 6:
-                    half NdotL = saturate(dot(normalWS, lightDir));
-                    colorMultiplier = NdotL * _DiffuseMultiplier;
+                        half3 NdotL = saturate(dot(normalWS, lightDir)) * mainLight.color.rgb;
+                        half addedNdotL = saturate(dot(normalWS, addedLightDir)) * additionalLight.color.rgb;
+                        //make shadows less dark
                         
-                    colorAddition += SampleSH(normalWS) * _AmbientMultiplier;
+                        colorMultiplier = max(NdotL * _DiffuseMultiplier * mainLight.shadowAttenuation, 0.2);
+                        colorMultiplier += max(addedNdotL * _DiffuseMultiplier * additionalLight.shadowAttenuation, 0.2);
                         
-                    half3 reflectDir = reflect(-lightDir, normalWS);
+                    colorAddition += saturate(SampleSH(normalWS) * _AmbientMultiplier);
+                        
+                        half3 reflectDir = reflect(-lightDir, normalWS);
                         half3 viewDir = normalize(IN.viewDirWS);
                         half specFactor = pow(saturate(dot(reflectDir, viewDir)), _Shininess);
                         half3 specular = _SpecColor * specFactor;
-                    colorAddition = (colorAddition + specular) / 2;
-                    
-                    //extra HDR glow effect
-                    colorMultiplier = colorMultiplier *_GlowColor * _GlowPower;
+                        
+                        half3 reflectDir2 = reflect(-addedLightDir, normalWS);
+                        half3 viewDir2 = normalize(IN.viewDirWS);
+                        half specFactor2 = pow(saturate(dot(reflectDir2, viewDir2)), _Shininess);
+                        half3 specular2 = _SpecColor * specFactor2;
+                        
+                        colorAddition = colorAddition + specular * mainLight.shadowAttenuation + specular2 * additionalLight.shadowAttenuation;
                     break;
                 default:
                     break;
