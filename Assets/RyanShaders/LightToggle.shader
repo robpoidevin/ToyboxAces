@@ -105,24 +105,27 @@ Shader "Custom/LightToggle"
                 half3x3 TBN = half3x3(IN.tangentWS, IN.biTangentWS, IN.normalWS);
                 half3 normalWS = normalize(mul(normalTS, TBN));
                 
-                half colorMultiplier = 1;
-                half colorAddition = 0;
+                half3 colorMultiplier = 1;
+                half3 colorAddition = 0;
                 
                 //get light info
                 Light mainLight = GetMainLight();
                 half3 lightDir = normalize(mainLight.direction);
-                half3 extraLight = half3(0,0,0);
                 Light additionalLight = GetAdditionalLight(0, IN.positionWS);
+                half3 addedLightDir = normalize(additionalLight.direction);
+                
                 
                 switch (_CurrentLightingMode)
                 {
                 //diffuse lighting
                 case 2:
                     {
-                        half NdotL = saturate(dot(normalWS, lightDir));
+                        half3 NdotL = saturate(dot(normalWS, lightDir)) * mainLight.color.rgb;
+                        half addedNdotL = saturate(dot(normalWS, addedLightDir)) * additionalLight.color.rgb;
                         //make shadows less dark
                         
                         colorMultiplier = max(NdotL * _DiffuseMultiplier, 0.2);
+                        colorMultiplier += addedNdotL * _DiffuseMultiplier;
                         break;
                     }
                 //specular lighting
@@ -132,7 +135,13 @@ Shader "Custom/LightToggle"
                         half3 viewDir = normalize(IN.viewDirWS);
                         half specFactor = pow(saturate(dot(reflectDir, viewDir)), _Shininess);
                         half3 specular = _SpecColor * specFactor;
-                        colorAddition += specular;
+                        
+                        half3 reflectDir2 = reflect(-addedLightDir, normalWS);
+                        half3 viewDir2 = normalize(IN.viewDirWS);
+                        half specFactor2 = pow(saturate(dot(reflectDir2, viewDir2)), _Shininess);
+                        half3 specular2 = _SpecColor * specFactor2;
+                        
+                        colorAddition = colorAddition + specular + specular2;
                         break;
                     }
                 //ambient lighting
@@ -144,35 +153,52 @@ Shader "Custom/LightToggle"
                 //all lighting
                 case 5:
                     {
-                    half NdotL = saturate(dot(normalWS, lightDir));
-                    colorMultiplier = NdotL * _DiffuseMultiplier;
+                        half3 NdotL = saturate(dot(normalWS, lightDir)) * mainLight.color.rgb;
+                        half addedNdotL = saturate(dot(normalWS, addedLightDir)) * additionalLight.color.rgb;
+                        //make shadows less dark
+                        
+                        colorMultiplier = max(NdotL * _DiffuseMultiplier, 0.2);
+                        colorMultiplier += addedNdotL * _DiffuseMultiplier;
                         
                     colorAddition += saturate(SampleSH(normalWS) * _AmbientMultiplier);
                         
-                    half3 reflectDir = reflect(-lightDir, normalWS);
+                        half3 reflectDir = reflect(-lightDir, normalWS);
                         half3 viewDir = normalize(IN.viewDirWS);
                         half specFactor = pow(saturate(dot(reflectDir, viewDir)), _Shininess);
                         half3 specular = _SpecColor * specFactor;
-                        colorAddition = (colorAddition + specular) / 2;
+                        
+                        half3 reflectDir2 = reflect(-addedLightDir, normalWS);
+                        half3 viewDir2 = normalize(IN.viewDirWS);
+                        half specFactor2 = pow(saturate(dot(reflectDir2, viewDir2)), _Shininess);
+                        half3 specular2 = _SpecColor * specFactor2;
+                        
+                        colorAddition = colorAddition + specular + specular2;
                         
                     break;
                     }
            
                 //all lighting + effect
                 case 6:
-                    half NdotL = saturate(dot(normalWS, lightDir));
-                    colorMultiplier = NdotL * _DiffuseMultiplier;
+                        half3 NdotL = saturate(dot(normalWS, lightDir)) * mainLight.color.rgb;
+                        half addedNdotL = saturate(dot(normalWS, addedLightDir)) * additionalLight.color.rgb;
+                        //make shadows less dark
                         
-                    colorAddition += SampleSH(normalWS) * _AmbientMultiplier;
+                        colorMultiplier = max(NdotL * _DiffuseMultiplier, 0.2);
+                        colorMultiplier += max(addedNdotL * _DiffuseMultiplier, 0.2);
                         
-                    half3 reflectDir = reflect(-lightDir, normalWS);
+                    colorAddition += saturate(SampleSH(normalWS) * _AmbientMultiplier);
+                        
+                        half3 reflectDir = reflect(-lightDir, normalWS);
                         half3 viewDir = normalize(IN.viewDirWS);
                         half specFactor = pow(saturate(dot(reflectDir, viewDir)), _Shininess);
                         half3 specular = _SpecColor * specFactor;
-                    colorAddition = (colorAddition + specular) / 2;
-                    
-                    //extra HDR glow effect
-                    colorMultiplier = colorMultiplier *_GlowColor * _GlowPower;
+                        
+                        half3 reflectDir2 = reflect(-addedLightDir, normalWS);
+                        half3 viewDir2 = normalize(IN.viewDirWS);
+                        half specFactor2 = pow(saturate(dot(reflectDir2, viewDir2)), _Shininess);
+                        half3 specular2 = _SpecColor * specFactor2;
+                        
+                        colorAddition = colorAddition + specular + specular2;
                     break;
                 default:
                     break;
