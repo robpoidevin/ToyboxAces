@@ -105,13 +105,13 @@ Material:
     - _AmbientMultiplier: 0.2
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
-    - _BumpScale: 1
+    - _BumpScale: 0.2
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
-    - _CurrentLightingMode: 5
+    - _CurrentLightingMode: 2
     - _Cutoff: 0.5
-    - _DefaultLightingMode: 0
+    - _DefaultLightingMode: 2
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DiffuseMultiplier: 1
@@ -127,6 +127,7 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _RimPower: 6
     - _ScreenSpaceReflections: 1
     - _ScreenSpaceReflectionsContributeTransparent: 1
     - _Shininess: 6
@@ -144,6 +145,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
-    - _SpecColor: {r: 0.7987421, g: 0.5048652, b: 0.5048652, a: 1}
+    - _RimColor: {r: 1, g: 0.9868957, b: 0.34905648, a: 1}
+    - _SpecColor: {r: 0.81761, g: 0.20311682, b: 0.33948356, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

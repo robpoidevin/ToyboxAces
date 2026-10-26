@@ -98,10 +98,10 @@ Material:
     - _Cull: 2
     - _CurrentLightingMode: 6
     - _Cutoff: 0.5
-    - _DefaultLightingMode: 0
+    - _DefaultLightingMode: 6
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DiffuseMultiplier: 1
+    - _DiffuseMultiplier: 5
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
@@ -114,6 +114,7 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _RimPower: 5
     - _ScreenSpaceReflections: 1
     - _ScreenSpaceReflectionsContributeTransparent: 1
     - _Shininess: 6
@@ -131,7 +132,8 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GlowColor: {r: 4.628929, g: 0.101893894, b: 3.486336, a: 1}
-    - _SpecColor: {r: 0.9622642, g: 0.550501, b: 0.29957274, a: 1}
+    - _RimColor: {r: 0.39558518, g: 1, b: 0.32941175, a: 1}
+    - _SpecColor: {r: 1, g: 0.47443327, b: 0.15408784, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &4432324557521255697
