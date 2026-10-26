@@ -51,7 +51,15 @@ public class LightManager : MonoBehaviour
             {
                 foreach (Renderer litObject in lightToggleObjects)
                 {
-                    litObject.material.SetFloat("_CurrentLightMode", lightModeValue);
+                    if (lightModeValue == 0)
+                    {
+                        litObject.material.SetFloat("_CurrentLightingMode",litObject.material.GetFloat("_DefaultLightingMode"));
+                    }
+                    else
+                    {
+                        litObject.material.SetFloat("_CurrentLightingMode", lightModeValue);
+                    }
+                    
                 }
             }
         }
