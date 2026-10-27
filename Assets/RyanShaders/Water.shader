@@ -15,7 +15,7 @@ Shader "Custom/Water"
 
     SubShader
     {
-        Tags { "RenderType" = "Transparency" "Queue" = "Transparency" "RenderPipeline" = "UniversalPipeline" }
+        Tags { "RenderType" = "Transparent" "Queue" = "Transparent" "RenderPipeline" = "UniversalPipeline" }
 
         Pass
         {
