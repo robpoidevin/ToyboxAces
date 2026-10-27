@@ -622,7 +622,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlaneScript
   propeller: {fileID: 1724427000}
   maxPropellerSpeed: 10
-  propellerspeed: 0
+  propellerSpeed: 0
+  speedIncrement: 0
+  maxSpeed: 0
+  speed: 0
+  turnSpeed: 0
 --- !u!4 &840232592
 Transform:
   m_ObjectHideFlags: 0
@@ -2099,7 +2103,7 @@ PrefabInstance:
     - target: {fileID: -3838950152313394470, guid: b997ef2344d25fd4db0c8e237a8e8a50, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 43a898a6e208cab4da5add75f65b20c4, type: 2}
+      objectReference: {fileID: 2100000, guid: ec00b5731b35d084d8f96908ab6d92f8, type: 2}
     - target: {fileID: -3797866689915996471, guid: b997ef2344d25fd4db0c8e237a8e8a50, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -2168,6 +2172,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 6f9fa1e9e2d12324ab2396a85fdc8cdb, type: 2}
+    - target: {fileID: 312798698618953876, guid: b997ef2344d25fd4db0c8e237a8e8a50, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c1b0ff3e57129204baf7a41170e1f860, type: 2}
     - target: {fileID: 497116252660537134, guid: b997ef2344d25fd4db0c8e237a8e8a50, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
