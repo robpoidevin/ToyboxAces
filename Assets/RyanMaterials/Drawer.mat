@@ -92,11 +92,11 @@ Material:
     - _AmbientMultiplier: 0.2
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
-    - _BumpScale: 1
+    - _BumpScale: 2
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
-    - _CurrentLightingMode: 6
+    - _CurrentLightingMode: 5
     - _Cutoff: 0.5
     - _DefaultLightingMode: 5
     - _DetailAlbedoMapScale: 1
