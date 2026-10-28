@@ -131,7 +131,7 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _WaterTransparency: 0.5
+    - _WaterTransparency: 0.503
     - _WaveFrequency: 3
     - _WaveScale: 0.05
     - _WorkflowMode: 1
