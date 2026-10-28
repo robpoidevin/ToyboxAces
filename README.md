@@ -17,6 +17,23 @@ Liam Toews
 - Update ReadME
 
 **Project Progression Reflections**
+
+250 Word Team reflection
+
+**What worked **
+The project has had very few problems with shadows and lighting, and those aspects have turned out great. Glass and water shaders have worked very well at the fishtank area. Textures turned out great thanks to lighting and the bump shader. Lighting works and is toggleable. Color grading works and so does the TV glow effect.
+**What didn’t**
+Color grading in shaderlab is not viable since URP does not work with Unity’s OnRenderImage function that was laid out in class. The version control was poor initially since all group members worked on the same scene which caused many conflicts. The plane player was a struggle making accurate physics and making gravity work in a fun way.
+**What changed**
+We stayed very close to our original plan in our proposal document, meaning the only changes made was changing the water to be not transparent to add contrast to the scene, and removing the plushies from the bed.
+**What was updated**
+All the models got textured and some got metal and glass highlights which were all used in the LightToggle bump shader.
+**What was discarded**
+The toon shader was discarded for this progression point as well as the plane weapons and armory considering the timeframe. However these should be included in the final project.
+
+
+
+
 Ryan Jolly
 
 making an appropriate scene
