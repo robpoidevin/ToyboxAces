@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlaneScript : MonoBehaviour
 {
@@ -85,5 +86,12 @@ public class PlaneScript : MonoBehaviour
             rb.angularVelocity = new Vector3(Mathf.Lerp(rb.angularVelocity.x, 0, 2 * Time.fixedDeltaTime), Mathf.Lerp(rb.angularVelocity.y, 0, 2 * Time.fixedDeltaTime), rb.angularVelocity.z);
         }
         rb.angularVelocity = new Vector3(Mathf.Clamp(rb.angularVelocity.x, -4, 4), Mathf.Clamp(rb.angularVelocity.y, -4, 4), Mathf.Clamp(rb.angularVelocity.z, -4, 4));
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag != "touchable")
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }
