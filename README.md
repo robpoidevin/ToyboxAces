@@ -140,3 +140,9 @@ The win condition for the time being is to fly the plane into the pot. Since we 
 
 Gameplay Showcase:
 https://youtu.be/-Rg9p9Dj1a4
+
+**References** 
+Skybox - https://opengameart.org/content/cloudy-skyboxes-0 
+Water bump map - https://www.cadhatch.com/seamless-water-textures 
+tv error texture - https://www.shutterstock.com/image-illustration/seamless-no-signal-transmission-error-color-2175982267 
+ 
