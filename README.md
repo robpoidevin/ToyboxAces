@@ -16,6 +16,10 @@ Liam Toews
 - Wrote the proposal
 - Update ReadME
 
+Team members presenting their contributions and takeaways:
+
+https://www.youtube.com/watch?v=UzIMQDhmygE
+
 **Project Progression Reflections**
 
 250 Word Team reflection
