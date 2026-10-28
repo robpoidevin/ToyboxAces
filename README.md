@@ -82,3 +82,31 @@ The glass shader, also made with shader graph was my second of two shader contri
 Color Grading Look Up Tables
 Finally I was in charge of the warm and cool versions of our color grading. These were not super necessary specifically the warm as we designed the room with a warm lighting design to begin with so adding a warm color grading tint to everything did not look too good.
 
+Rob Poidevin
+
+Plane
+The plane has two main components, it's movement physics and it's propeller. For the physics, I used a rigid body to make the plane realistically rotate from side to side and up and down, as well as moving the plane forward. However just adding force was not enough, as the plane would just keep spinning and not stop. To fix this, I made the angular velocity lerp back to 0 constantly, so that when the plane is not actively spinning, the plane would slowly stop rotating. You control the player with WASD to rotate, and SPACE to move. As for the propeller, i made a simple script for rotation, but the origin was being super weird and the axis wasn't working. To fix this, I had to rotate it in a weird way and attach it to a parent game object and rotate the parent in order for it to work.
+
+<img width="392" height="549" alt="image" src="https://github.com/user-attachments/assets/26b069ed-7862-44f0-bbeb-14c2d9bb21e9" />
+
+<img width="785" height="311" alt="image" src="https://github.com/user-attachments/assets/d21c549e-a680-4a62-8cf0-35548ddf0a78" />
+
+<img width="885" height="403" alt="image" src="https://github.com/user-attachments/assets/aa0ac383-f034-439a-87a5-acc7c2888dde" />
+
+
+Movable objects
+The moveable objects are objects in the scene with physics, we used a rigid body to make a couple of building blocks the player can knock into, as well as a ball that the player can knock off the toybox. Crashing into these objects is intended and will not cause the player to lose and restart the game.
+
+<img width="713" height="216" alt="image" src="https://github.com/user-attachments/assets/7bb88610-2ad0-4f51-b1ef-eda728d1eaf6" />
+
+<img width="503" height="259" alt="image" src="https://github.com/user-attachments/assets/1bcbe385-c8f3-44ad-867b-b488eba10e8c" />
+
+Win Condition
+The win condition for the time being is to fly the plane into the pot. Since we did not have time to implement combat as of right now, we decided to make the win condition temporarily about flying to a certain location. If you hit the pot, you win, but if you hit anything else that isn't one of the moveable objects, then you lose and the game resets. To exit the game after you win, press escape.
+
+<img width="402" height="217" alt="image" src="https://github.com/user-attachments/assets/bb231a46-3f48-45f9-8d59-9e4384a0fce9" />
+
+<img width="590" height="349" alt="image" src="https://github.com/user-attachments/assets/a8335acc-f545-4bbd-9630-d0f2d675f3dc" />
+
+Gameplay Showcase:
+https://youtu.be/-Rg9p9Dj1a4
