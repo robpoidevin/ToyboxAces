@@ -16,3 +16,6 @@ Liam Toews
 - Wrote the proposal
 - Update ReadME
 
+**Project Progression Reflections**
+Ryan Jolly
+
