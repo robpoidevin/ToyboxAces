@@ -57,19 +57,26 @@ The tv HDR color shader is very similar to the default shader Unity provides but
 
 
 color grading implementation
-Color grading was achieved via shader graph and has a script to toggle look up tables to change the look of the scene. The color grading was attempted to make the scene have more warm colors to enhance our environment's orange tinted light, but it did not look good since the environment looked good before color grading was applied. <img width="163" height="118" alt="image" src="https://github.com/user-attachments/assets/eeb84c2c-8713-43eb-b2f3-7af532fc52eb" /> <img width="272" height="330" alt="image" src="https://github.com/user-attachments/assets/debbe4f3-56c9-4211-a60f-147d198c09a4" />
+Color grading was achieved via shader graph and has a script to toggle look up tables to change the look of the scene. The color grading was attempted to make the scene have more warm colors to enhance our environment's orange tinted light, but it did not look good since the environment looked good before color grading was applied.
+<img width="163" height="118" alt="image" src="https://github.com/user-attachments/assets/eeb84c2c-8713-43eb-b2f3-7af532fc52eb" /> 
+<img width="272" height="330" alt="image" src="https://github.com/user-attachments/assets/debbe4f3-56c9-4211-a60f-147d198c09a4" />
 
 Liam Toews
 
 Metal Shader
 The metal shader was made using shader graph. The added piece that makes metal different was I added some noise piece so that it makes the metal look worn and tarnished as this room would be a little kids meaning mess and damage should be expected. It adds a level of difference and also most handles are not wood so we wanted a more unique look for the environment. This metal texture was added to the cabinet handles, door handles, and the roof fan.
+
 <img width="475" height="137" alt="image" src="https://github.com/user-attachments/assets/3b486944-0e62-4d8b-9a13-51d52a57beb6" />
+
 <img width="251" height="185" alt="image" src="https://github.com/user-attachments/assets/dc17b3b8-3b27-477a-b09c-661b29de6a1c" />
+
 <img width="494" height="255" alt="image" src="https://github.com/user-attachments/assets/983b1b74-3a04-4932-8d15-2f3447c0b6e5" />
 
 Glass Shader
 The glass shader, also made with shader graph was my second of two shader contributions. For this shader I started with it taking the alpha value for transparency from the color so it can be modified incase any of the glass we used needed to be not as clear seen. I also added more noise with a slider to add some depth and warp to the glass without the need for bump maps. This glass was added one to the fish tank and another to the light on the fan and there will be an addition to a window once we add one in. This is beneficial to the scene as it adds some more levels of realism and true to the idea of the room. We wanted to show off the water shader as well which needed the glass to allow to water to even be seen in the fish tank.
+
 <img width="377" height="284" alt="image" src="https://github.com/user-attachments/assets/a7ab75eb-2a53-439f-8161-a3a0a395d8c0" />
+
 <img width="332" height="218" alt="image" src="https://github.com/user-attachments/assets/bd6b3614-d13c-4d75-a212-1740e3d7ed23" />
 
 Color Grading Look Up Tables
