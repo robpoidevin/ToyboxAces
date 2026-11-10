@@ -107,7 +107,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _Distort_Strength: 0.0001
+    - _Distort_Strength: 0.21
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
@@ -117,7 +117,7 @@ Material:
     - _Metalic: 0
     - _Metallic: 0
     - _NoiseScale: 50
-    - _Normal_Strength: 0.01
+    - _Normal_Strength: 0.16
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
