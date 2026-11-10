@@ -109,9 +109,9 @@ Material:
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
-    - _CurrentLightingMode: 6
+    - _CurrentLightingMode: 5
     - _Cutoff: 0.5
-    - _DefaultLightingMode: 6
+    - _DefaultLightingMode: 5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DiffuseMultiplier: 0.6
