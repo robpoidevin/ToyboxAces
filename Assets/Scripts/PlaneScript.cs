@@ -14,6 +14,7 @@ public class PlaneScript : MonoBehaviour
     public float maxSpeed;
     public float speed;
     public float turnSpeed;
+    public float rollSpeed;
     Vector3 turn = Vector3.zero;
     float pitch;
     float yaw;
@@ -62,7 +63,7 @@ public class PlaneScript : MonoBehaviour
         rb.AddForce((transform.forward + turn) * maxSpeed * speed);
         rb.linearVelocity = transform.forward * rb.linearVelocity.magnitude;
         rb.linearVelocity = new Vector3(Mathf.Clamp(rb.linearVelocity.x, -0.5f, 0.5f), Mathf.Clamp(rb.linearVelocity.y, -0.5f, 0.5f), Mathf.Clamp(rb.linearVelocity.z, -0.5f, 0.5f));
-        rb.AddTorque(-transform.forward * roll * 0.03f);
+        rb.AddTorque(-transform.forward * roll * rollSpeed);
         if (!Input.GetKey(KeyCode.Space))
         {
             rb.linearVelocity = new Vector3(Mathf.Lerp(rb.linearVelocity.x, 0, 2 * Time.fixedDeltaTime), rb.linearVelocity.y, rb.linearVelocity.z);
