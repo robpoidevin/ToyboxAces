@@ -12,7 +12,7 @@ public class PlaneScript : MonoBehaviour
     [Header("Plane")]
     public float speedIncrement;
     public float maxSpeed;
-    public float speed;
+    float speed = 100;
     public float turnSpeed;
     public float rollSpeed;
     public float tiltSpeed;
@@ -32,13 +32,9 @@ public class PlaneScript : MonoBehaviour
     void Update()
     {
         //----------Propeller------------
-        if (Input.GetKey(KeyCode.Space) && propellerSpeed != maxPropellerSpeed)
+        if (!Input.GetKey(KeyCode.Space) && propellerSpeed != maxPropellerSpeed)
         {
             propellerSpeed += 1f * Time.deltaTime;
-        }
-        else if (!Input.GetKey(KeyCode.Space) && propellerSpeed > 0)
-        {
-            propellerSpeed -= 1f * Time.deltaTime;
         }
         else
         {
@@ -52,13 +48,21 @@ public class PlaneScript : MonoBehaviour
         yaw = Input.GetAxis("TurnPlane");
         if (Input.GetKey(KeyCode.Space) && speed > 1)
         {
-            speed = 50;
+            maxSpeed = 2;
         }
         else if (!Input.GetKey(KeyCode.Space))
         {
-            speed = 100;
+            maxSpeed = 1;
         }
-        speed = Mathf.Clamp(speed, 0f, 100);
+        propellerSpeed = Mathf.Clamp(propellerSpeed, 0f, maxPropellerSpeed);
+        if (speed > maxSpeed)
+        {
+            speed -= 0.001f;
+        }
+        if (speed < maxSpeed)
+        {
+            speed += 0.001f;
+        }
         //transform.Rotate(new Vector3(0, 0, 0.1f));
         Debug.Log(rb.angularVelocity.z);
     }
