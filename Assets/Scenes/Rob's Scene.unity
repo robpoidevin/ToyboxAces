@@ -2528,6 +2528,8 @@ MonoBehaviour:
   maxSpeed: 1
   speed: 0
   turnSpeed: 100
+  rollSpeed: 0.05
+  tiltSpeed: 0.0007
 --- !u!4 &1328193525
 Transform:
   m_ObjectHideFlags: 0
@@ -2701,7 +2703,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1455745430
 MonoBehaviour:
   m_ObjectHideFlags: 0
