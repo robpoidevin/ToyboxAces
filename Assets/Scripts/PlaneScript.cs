@@ -12,8 +12,10 @@ public class PlaneScript : MonoBehaviour
     [Header("Plane")]
     public float speedIncrement;
     public float maxSpeed;
-    public float speed;
+    float speed = 100;
     public float turnSpeed;
+    public float rollSpeed;
+    public float tiltSpeed;
     Vector3 turn = Vector3.zero;
     float pitch;
     float yaw;
@@ -22,19 +24,17 @@ public class PlaneScript : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        rollSpeed = 0.05f;
+        tiltSpeed = 0.0007f;
     }
 
     // Update is called once per frame
     void Update()
     {
         //----------Propeller------------
-        if (Input.GetKey(KeyCode.Space) && propellerSpeed != maxPropellerSpeed)
+        if (!Input.GetKey(KeyCode.Space) && propellerSpeed != maxPropellerSpeed)
         {
             propellerSpeed += 1f * Time.deltaTime;
-        }
-        else if (!Input.GetKey(KeyCode.Space) && propellerSpeed > 0)
-        {
-            propellerSpeed -= 1f * Time.deltaTime;
         }
         else
         {
@@ -45,16 +45,26 @@ public class PlaneScript : MonoBehaviour
         Debug.Log(rb.linearVelocity);
         roll = Input.GetAxis("Horizontal");
         pitch = Input.GetAxis("Vertical");
-        if (Input.GetKey(KeyCode.Space))
+        yaw = Input.GetAxis("TurnPlane");
+        if (Input.GetKey(KeyCode.Space) && speed > 1)
         {
-            speed += speedIncrement;
+            maxSpeed = 2;
         }
         else if (!Input.GetKey(KeyCode.Space))
         {
-            speed -= speedIncrement;
+            maxSpeed = 1;
         }
-        speed = Mathf.Clamp(speed, 0f, 100);
+        propellerSpeed = Mathf.Clamp(propellerSpeed, 0f, maxPropellerSpeed);
+        if (speed > maxSpeed)
+        {
+            speed -= 0.001f;
+        }
+        if (speed < maxSpeed)
+        {
+            speed += 0.001f;
+        }
         //transform.Rotate(new Vector3(0, 0, 0.1f));
+        Debug.Log(rb.angularVelocity.z);
     }
     private void FixedUpdate()
     {
@@ -62,7 +72,7 @@ public class PlaneScript : MonoBehaviour
         rb.AddForce((transform.forward + turn) * maxSpeed * speed);
         rb.linearVelocity = transform.forward * rb.linearVelocity.magnitude;
         rb.linearVelocity = new Vector3(Mathf.Clamp(rb.linearVelocity.x, -0.5f, 0.5f), Mathf.Clamp(rb.linearVelocity.y, -0.5f, 0.5f), Mathf.Clamp(rb.linearVelocity.z, -0.5f, 0.5f));
-        rb.AddTorque(-transform.forward * roll * 0.03f);
+        rb.AddTorque(-transform.forward * roll * rollSpeed);
         if (!Input.GetKey(KeyCode.Space))
         {
             rb.linearVelocity = new Vector3(Mathf.Lerp(rb.linearVelocity.x, 0, 2 * Time.fixedDeltaTime), rb.linearVelocity.y, rb.linearVelocity.z);
@@ -76,7 +86,9 @@ public class PlaneScript : MonoBehaviour
             rb.angularVelocity = new Vector3(rb.angularVelocity.x, rb.angularVelocity.y, Mathf.Lerp(rb.angularVelocity.z, 0, 2 * Time.fixedDeltaTime));
         }*/
         rb.angularVelocity = new Vector3(Mathf.Lerp(rb.angularVelocity.x, 0, 2 * Time.fixedDeltaTime), Mathf.Lerp(rb.angularVelocity.y, 0, 2 * Time.fixedDeltaTime), Mathf.Lerp(rb.angularVelocity.z, 0, 2 * Time.fixedDeltaTime));
-        rb.AddTorque(transform.right * pitch * 0.0007f);
+        rb.AddTorque(transform.right * pitch * tiltSpeed);
+        rb.AddTorque(transform.up * yaw * 0.02f);
+        // rb.AddTorque(transform.up * transform.rotation.z * 0.07f);
         if (!Input.GetKey(KeyCode.W) && rb.angularVelocity.x > 0)
         {
             rb.angularVelocity = new Vector3(Mathf.Lerp(rb.angularVelocity.x, 0, 2 * Time.fixedDeltaTime), Mathf.Lerp(rb.angularVelocity.y, 0, 2 * Time.fixedDeltaTime), rb.angularVelocity.z);
