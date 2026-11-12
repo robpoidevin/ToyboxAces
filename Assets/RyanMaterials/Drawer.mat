@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Drawer
-  m_Shader: {fileID: 4800000, guid: c2e158687a80e9848b4b0da6e10b2858, type: 3}
+  m_Shader: {fileID: 4800000, guid: de53d848002e2944eb70ef5f008f4692, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -92,13 +92,13 @@ Material:
     - _AmbientMultiplier: 0.2
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
-    - _BumpScale: 2
+    - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
-    - _CurrentLightingMode: 5
+    - _CurrentLightingMode: 2
     - _Cutoff: 0.5
-    - _DefaultLightingMode: 5
+    - _DefaultLightingMode: 2
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DiffuseMultiplier: 2

@@ -27,11 +27,11 @@ Shader "Custom/LightToggle"
     SubShader
     {
         Tags { "RenderType" = "Opaque" "RenderPipeline" = "UniversalPipeline"}
-
-        UsePass "Universal Render Pipeline/Lit/ShadowCaster"
+        
         
         Pass
         {
+            Tags{"LightMode" = "UniversalForward"}
             HLSLPROGRAM
 
             #pragma vertex vert
@@ -39,6 +39,7 @@ Shader "Custom/LightToggle"
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Shadows.hlsl"
             
             //for additional lights alongside main light
             #pragma multi_compile _ _ADDITIONAL_LIGHTS
