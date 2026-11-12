@@ -14,10 +14,9 @@ public class WeaponSystem : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.K)) 
         {
             Instantiate(missle, transform.position + misslePos, transform.rotation * Quaternion.Euler(90, 0, 0));
-            
         }
     }
 }
