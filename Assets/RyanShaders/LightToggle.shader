@@ -42,7 +42,7 @@ Shader "Custom/LightToggle"
             
             //for additional lights alongside main light
             #pragma multi_compile _ _ADDITIONAL_LIGHTS
-            #pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOW_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
+            #pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
             #pragma multi_compile _ _ADDITIONAL_LIGHT_SHADOWS
 
             struct Attributes
