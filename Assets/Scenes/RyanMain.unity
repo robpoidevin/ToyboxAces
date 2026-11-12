@@ -1830,6 +1830,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719227163}
   m_Mesh: {fileID: -735027064060778382, guid: edd3bbf5f6e0d0946afba892693a98e4, type: 3}
+--- !u!1001 &744128520
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 7fe11884acae53948b226eb806b1bb7b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.256379
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7fe11884acae53948b226eb806b1bb7b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.1848
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7fe11884acae53948b226eb806b1bb7b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.72264
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7fe11884acae53948b226eb806b1bb7b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7fe11884acae53948b226eb806b1bb7b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7fe11884acae53948b226eb806b1bb7b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7fe11884acae53948b226eb806b1bb7b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7fe11884acae53948b226eb806b1bb7b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7fe11884acae53948b226eb806b1bb7b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7fe11884acae53948b226eb806b1bb7b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7fe11884acae53948b226eb806b1bb7b, type: 3}
+      propertyPath: m_Name
+      value: PlaneBoost (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7fe11884acae53948b226eb806b1bb7b, type: 3}
 --- !u!1001 &838749857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4334,3 +4391,4 @@ SceneRoots:
   - {fileID: 1455745431}
   - {fileID: 34761199}
   - {fileID: 3035442686988395783}
+  - {fileID: 744128520}
