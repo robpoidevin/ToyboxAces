@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d9330a3fc6626a04d8b77d00728d5116, type: 2}
+  - {fileID: 2100000, guid: dbefbdbd4c69e1b4ab45d2b9186fd02b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -127,7 +127,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RingScore
   trigger: {fileID: 3831347149916005998}
   triggered: 0
-  addScore: 0
 --- !u!1 &4178175299247121065
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,7 +193,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d9330a3fc6626a04d8b77d00728d5116, type: 2}
+  - {fileID: 2100000, guid: dbefbdbd4c69e1b4ab45d2b9186fd02b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
