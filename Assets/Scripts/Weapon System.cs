@@ -1,22 +1,52 @@
 using UnityEngine;
+using System.Collections;
 
+// Made By Liam
 public class WeaponSystem : MonoBehaviour
 {
-    public GameObject missle;
-    Vector3 misslePos = new Vector3(0, -0.02f, 0);
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public GameObject missile;
+    public GameObject bullet;
+    public float bulletDelay;
+    bool canFire = true;
+    bool fireLeft = true;
+    Vector3 missilePos = new Vector3(0, -0.02f, 0);
+    Vector3 bulletPosL = new Vector3(-0.06f, -0.008f, 0.05f);
+    Vector3 bulletPosR = new Vector3(0.06f, -0.008f, 0.05f);
 
-    // Update is called once per frame
     void Update()
     {
+        if (canFire)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                if (fireLeft)
+                {
+                    Instantiate(bullet, transform.position + bulletPosL, Quaternion.Euler(90, 0, 0));
+                    canFire = false;
+                    StartCoroutine(Delay());
+                    fireLeft = false;
+                }
+
+                else if (!fireLeft)
+                {
+                    Instantiate(bullet, transform.position + bulletPosR, Quaternion.Euler(90, 0, 0));
+                    canFire = false;
+                    StartCoroutine(Delay());
+                    fireLeft = true;
+                }
+                
+            }
+        }
         
         if (Input.GetKeyDown(KeyCode.K)) 
         {
-            Instantiate(missle, transform.position + misslePos, transform.rotation * Quaternion.Euler(90, 0, 0));
+            Instantiate(missile, transform.position + missilePos, transform.rotation * Quaternion.Euler(90, 0, 0));
         }
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(bulletDelay);
+        canFire = true;
     }
 }
