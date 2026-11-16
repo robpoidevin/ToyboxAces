@@ -12,7 +12,7 @@ public class RowanPlaneScript : MonoBehaviour
     [Header("Plane")]
     public float speedIncrement;
     public float maxSpeed;
-    float speed = 1; //edited
+    float speed = 100;
     public float turnSpeed;
     public float rollSpeed;
     public float tiltSpeed;
@@ -23,7 +23,7 @@ public class RowanPlaneScript : MonoBehaviour
     //--Rowan Adds Stuff--
     [Header("HUD")]
     public GameObject speedLines;
-    public float speedLineThreshold = 1.5f;
+    public float speedLineThreshold = 2;
     //--------------------
     
     void Awake()
@@ -60,6 +60,7 @@ public class RowanPlaneScript : MonoBehaviour
             maxSpeed = 1;
         }
         propellerSpeed = Mathf.Clamp(propellerSpeed, 0f, maxPropellerSpeed);
+        /* Rowan Kills Things
         if (speed > maxSpeed)
         {
             speed -= 0.001f;
@@ -68,18 +69,19 @@ public class RowanPlaneScript : MonoBehaviour
         {
             speed += 0.001f;
         }
+        */
         //transform.Rotate(new Vector3(0, 0, 0.1f));
         Debug.Log(rb.angularVelocity.z);
 
         //--Rowan Adds Stuff--
         Debug.Log(speed);
-        if (speed < speedLineThreshold) { speedLines.SetActive(false); } else { speedLines.SetActive(true); }
+        if (maxSpeed < speedLineThreshold) { speedLines.SetActive(false); } else { speedLines.SetActive(true); }
         //--------------------
     }
     private void FixedUpdate()
     {
         
-        rb.AddForce((transform.forward + turn) * maxSpeed * speed * 100); //edited
+        rb.AddForce((transform.forward + turn) * maxSpeed * speed);
         rb.linearVelocity = transform.forward * rb.linearVelocity.magnitude;
         rb.linearVelocity = new Vector3(Mathf.Clamp(rb.linearVelocity.x, -0.5f, 0.5f), Mathf.Clamp(rb.linearVelocity.y, -0.5f, 0.5f), Mathf.Clamp(rb.linearVelocity.z, -0.5f, 0.5f));
         rb.AddTorque(-transform.forward * roll * rollSpeed);
