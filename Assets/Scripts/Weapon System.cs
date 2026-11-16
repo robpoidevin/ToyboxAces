@@ -6,6 +6,8 @@ public class WeaponSystem : MonoBehaviour
 {
     public GameObject missile;
     public GameObject bullet;
+    public ParticleSystem barrelLeft;
+    public ParticleSystem barrelRight;
     public float bulletDelay;
     bool canFire = true;
     bool fireLeft = true;
@@ -21,6 +23,7 @@ public class WeaponSystem : MonoBehaviour
             {
                 if (fireLeft)
                 {
+                    barrelLeft.Play();
                     Instantiate(bullet, transform.position + bulletPosL, Quaternion.Euler(90, 0, 0));
                     canFire = false;
                     StartCoroutine(Delay());
@@ -29,6 +32,7 @@ public class WeaponSystem : MonoBehaviour
 
                 else if (!fireLeft)
                 {
+                    barrelRight.Play();
                     Instantiate(bullet, transform.position + bulletPosR, Quaternion.Euler(90, 0, 0));
                     canFire = false;
                     StartCoroutine(Delay());
