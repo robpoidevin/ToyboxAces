@@ -24,7 +24,7 @@ public class WeaponSystem : MonoBehaviour
                 if (fireLeft)
                 {
                     barrelLeft.Play();
-                    Instantiate(bullet, transform.position + bulletPosL, Quaternion.Euler(90, 0, 0));
+                    Instantiate(bullet, transform.position + bulletPosL, transform.rotation * Quaternion.Euler(90, 0, 0));
                     canFire = false;
                     StartCoroutine(Delay());
                     fireLeft = false;
@@ -33,7 +33,7 @@ public class WeaponSystem : MonoBehaviour
                 else if (!fireLeft)
                 {
                     barrelRight.Play();
-                    Instantiate(bullet, transform.position + bulletPosR, Quaternion.Euler(90, 0, 0));
+                    Instantiate(bullet, transform.position + bulletPosR, transform.rotation * Quaternion.Euler(90, 0, 0));
                     canFire = false;
                     StartCoroutine(Delay());
                     fireLeft = true;
