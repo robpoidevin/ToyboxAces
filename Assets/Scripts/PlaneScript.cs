@@ -5,18 +5,18 @@ public class PlaneScript : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     Rigidbody rb;
+    public bool isNormie;
+
     [Header("Propeller")]
     public GameObject propeller;
     public float maxPropellerSpeed;
     public float propellerSpeed;
     [Header("Plane")]
-    public float speedIncrement;
     public float maxSpeed;
-    float speed = 100;
+    public float speed = 100;
     public float turnSpeed;
     public float rollSpeed;
     public float tiltSpeed;
-    Vector3 turn = Vector3.zero;
     float pitch;
     float yaw;
     float roll;
@@ -32,7 +32,7 @@ public class PlaneScript : MonoBehaviour
     void Update()
     {
         //----------Propeller------------
-        if (!Input.GetKey(KeyCode.Space) && propellerSpeed != maxPropellerSpeed)
+        if (propellerSpeed != maxPropellerSpeed)
         {
             propellerSpeed += 1f * Time.deltaTime;
         }
@@ -43,60 +43,60 @@ public class PlaneScript : MonoBehaviour
         propeller.transform.Rotate(new Vector3(0, propellerSpeed, 0));
         //------------------------------
         Debug.Log(rb.linearVelocity);
-        roll = Input.GetAxis("Horizontal");
+
         pitch = Input.GetAxis("Vertical");
-        yaw = Input.GetAxis("TurnPlane");
+
+        //
+        if (!isNormie)
+        {
+            roll = Input.GetAxis("Horizontal");
+            yaw = Input.GetAxis("TurnPlane");
+        }
+        else
+        {
+            yaw = Input.GetAxis("Horizontal");
+            roll = Input.GetAxis("TurnPlane");
+            pitch = pitch * -1;
+        }
+        
         if (Input.GetKey(KeyCode.Space) && speed > 1)
         {
-            maxSpeed = 2;
+            maxSpeed = 200;
         }
         else if (!Input.GetKey(KeyCode.Space))
         {
-            maxSpeed = 1;
+            maxSpeed = 100;
         }
+
         propellerSpeed = Mathf.Clamp(propellerSpeed, 0f, maxPropellerSpeed);
+
         if (speed > maxSpeed)
         {
-            speed -= 0.001f;
+            speed -= 1f;
         }
         if (speed < maxSpeed)
         {
-            speed += 0.001f;
+            speed += 1f;
         }
         //transform.Rotate(new Vector3(0, 0, 0.1f));
         Debug.Log(rb.angularVelocity.z);
     }
     private void FixedUpdate()
     {
-        
-        rb.AddForce((transform.forward + turn) * maxSpeed * speed);
+        //move plane forward
+        rb.AddForce((transform.forward) * speed);
+        //makes plane move in the direction the plane
         rb.linearVelocity = transform.forward * rb.linearVelocity.magnitude;
+        //clamps the velosity
         rb.linearVelocity = new Vector3(Mathf.Clamp(rb.linearVelocity.x, -0.5f, 0.5f), Mathf.Clamp(rb.linearVelocity.y, -0.5f, 0.5f), Mathf.Clamp(rb.linearVelocity.z, -0.5f, 0.5f));
+        //roll the plane
         rb.AddTorque(-transform.forward * roll * rollSpeed);
-        if (!Input.GetKey(KeyCode.Space))
-        {
-            rb.linearVelocity = new Vector3(Mathf.Lerp(rb.linearVelocity.x, 0, 2 * Time.fixedDeltaTime), rb.linearVelocity.y, rb.linearVelocity.z);
-        }
-        /*if (!Input.GetKey(KeyCode.A) && rb.angularVelocity.z > 0)
-        {
-            rb.angularVelocity = new Vector3(rb.angularVelocity.x, rb.angularVelocity.y, Mathf.Lerp(rb.angularVelocity.z, 0, 2 *Time.fixedDeltaTime));
-        }
-        if (!Input.GetKey(KeyCode.D) && rb.angularVelocity.z < 0)
-        {
-            rb.angularVelocity = new Vector3(rb.angularVelocity.x, rb.angularVelocity.y, Mathf.Lerp(rb.angularVelocity.z, 0, 2 * Time.fixedDeltaTime));
-        }*/
-        rb.angularVelocity = new Vector3(Mathf.Lerp(rb.angularVelocity.x, 0, 2 * Time.fixedDeltaTime), Mathf.Lerp(rb.angularVelocity.y, 0, 2 * Time.fixedDeltaTime), Mathf.Lerp(rb.angularVelocity.z, 0, 2 * Time.fixedDeltaTime));
+        //tilt the plane up and down
         rb.AddTorque(transform.right * pitch * tiltSpeed);
+        //rotate the plane left and right
         rb.AddTorque(transform.up * yaw * 0.02f);
-        // rb.AddTorque(transform.up * transform.rotation.z * 0.07f);
-        if (!Input.GetKey(KeyCode.W) && rb.angularVelocity.x > 0)
-        {
-            rb.angularVelocity = new Vector3(Mathf.Lerp(rb.angularVelocity.x, 0, 2 * Time.fixedDeltaTime), Mathf.Lerp(rb.angularVelocity.y, 0, 2 * Time.fixedDeltaTime), rb.angularVelocity.z);
-        }
-        if (!Input.GetKey(KeyCode.S) && rb.angularVelocity.x < 0)
-        {
-            rb.angularVelocity = new Vector3(Mathf.Lerp(rb.angularVelocity.x, 0, 2 * Time.fixedDeltaTime), Mathf.Lerp(rb.angularVelocity.y, 0, 2 * Time.fixedDeltaTime), rb.angularVelocity.z);
-        }
+        //slow turn so it stops when inactive
+        rb.angularVelocity = new Vector3(Mathf.Lerp(rb.angularVelocity.x, 0, 2 * Time.fixedDeltaTime), Mathf.Lerp(rb.angularVelocity.y, 0, 2 * Time.fixedDeltaTime), Mathf.Lerp(rb.angularVelocity.z, 0, 2 * Time.fixedDeltaTime));
         rb.angularVelocity = new Vector3(Mathf.Clamp(rb.angularVelocity.x, -4, 4), Mathf.Clamp(rb.angularVelocity.y, -4, 4), Mathf.Clamp(rb.angularVelocity.z, -4, 4));
     }
     private void OnCollisionEnter(Collision collision)
