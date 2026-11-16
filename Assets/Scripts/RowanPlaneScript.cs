@@ -47,7 +47,7 @@ public class RowanPlaneScript : MonoBehaviour
         }
         propeller.transform.Rotate(new Vector3(0, propellerSpeed, 0));
         //------------------------------
-        Debug.Log(rb.linearVelocity);
+        //Debug.Log(rb.linearVelocity);
         roll = Input.GetAxis("Horizontal");
         pitch = Input.GetAxis("Vertical");
         yaw = Input.GetAxis("TurnPlane");
@@ -71,10 +71,10 @@ public class RowanPlaneScript : MonoBehaviour
         }
         */
         //transform.Rotate(new Vector3(0, 0, 0.1f));
-        Debug.Log(rb.angularVelocity.z);
+        //Debug.Log(rb.angularVelocity.z);
 
         //--Rowan Adds Stuff--
-        Debug.Log(speed);
+        //Debug.Log(speed);
         if (maxSpeed < speedLineThreshold) { speedLines.SetActive(false); } else { speedLines.SetActive(true); }
         //--------------------
     }
