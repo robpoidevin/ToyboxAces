@@ -1,14 +1,14 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 
-public class Missle : MonoBehaviour
+public class Bullets : MonoBehaviour
 {
-    public GameObject boom;
+    
+    public GameObject bulletPrefab;
+    private float speed;
     CapsuleCollider collider;
     Rigidbody rb;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         collider = GetComponent<CapsuleCollider>();
@@ -16,7 +16,6 @@ public class Missle : MonoBehaviour
         StartCoroutine(EnableCollider());
     }
 
-    // Update is called once per frame
     void Update()
     {
         rb.linearVelocity = transform.up * 3f;
@@ -24,12 +23,9 @@ public class Missle : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Instantiate(boom, transform.position, Quaternion.identity);
+        //Instantiate(spark, transform.position, Quaternion.identity);      If we want contact particles we add it here
         Destroy(gameObject);
     }
-    
-        
-    
     
     IEnumerator EnableCollider()
     {
