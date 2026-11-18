@@ -3596,11 +3596,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0bf053b6e6bf5a41b9d9ec37523221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlaneScript
+  isNormie: 0
   propeller: {fileID: 719227163}
   maxPropellerSpeed: 10
   propellerSpeed: 0
-  speedIncrement: 5
   maxSpeed: 1
+  speed: 100
   turnSpeed: 100
   rollSpeed: 0
   tiltSpeed: 0
@@ -3641,7 +3642,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646a3c9910d8c804f9f1f7966c528631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponSystem
-  missle: {fileID: 6037700623748942747, guid: 5cff9facf900e22418b3b1b2e47502d9, type: 3}
+  missile: {fileID: 0}
+  bullet: {fileID: 0}
+  barrelLeft: {fileID: 0}
+  barrelRight: {fileID: 0}
+  bulletDelay: 0
 --- !u!1 &1353789746
 GameObject:
   m_ObjectHideFlags: 0

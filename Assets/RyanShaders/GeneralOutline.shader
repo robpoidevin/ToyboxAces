@@ -47,7 +47,7 @@ Shader "Custom/GeneralOutline"
 
             float Rand(float2 uv)
             {
-                return frac(sin(dot(uv + _Time.y, float2(12.9898, 78.233))) * 43758.5453);
+                return frac(sin(dot(uv + _Time.y, float2(12.9898, 78.233))) * 43758.5453) * 2 - 1;
             }
             
             struct Attributes
@@ -107,7 +107,7 @@ Shader "Custom/GeneralOutline"
                 
                 //float randomness = sin(_Time.y) * 0.1 + Rand(IN.uv) * _PrimaryVariationScale;
                 
-                posOS = posOS + sin(Rand(IN.uv)) * (IN.normalOS * _PrimaryWidth  * _PrimaryVariationScale);
+                posOS = posOS + IN.normalOS * _PrimaryWidth + Rand(IN.uv) * _PrimaryVariationScale;
                 
                 OUT.positionHCS = TransformObjectToHClip(posOS);
                 OUT.uv = IN.uv;
@@ -170,7 +170,7 @@ Shader "Custom/GeneralOutline"
                 Varyings OUT;
                 //outline stuff
                 float3 posOS = IN.positionOS;
-                posOS = posOS + sin(Rand(IN.uv)) * (IN.normalOS * _SecondaryWidth * _PrimaryVariationScale);
+                posOS = posOS + IN.normalOS * _SecondaryWidth; + Rand(IN.uv) * _PrimaryVariationScale;
                 
                 //Random variation
                 OUT.positionHCS = TransformObjectToHClip(posOS);
