@@ -122,7 +122,7 @@ Material:
     - _OpacityThreshold: 0
     - _Parallax: 0.005
     - _PrimaryVariationFrequency: 0
-    - _PrimaryVariationScale: 0.0001
+    - _PrimaryVariationScale: 0.0002
     - _PrimaryWidth: 0.001
     - _QueueControl: 0
     - _QueueOffset: 0
