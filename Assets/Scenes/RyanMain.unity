@@ -1437,13 +1437,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 426663115}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.9297622, z: -0.36816072, w: 0}
-  m_LocalPosition: {x: 0.1, y: 10.68, z: 16.25}
+  m_LocalRotation: {x: -0, y: 0.91358244, z: -0.40665343, w: 0}
+  m_LocalPosition: {x: 0.1, y: 10.68, z: 16.250002}
   m_LocalScale: {x: 0.66569984, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1915813491}
-  m_LocalEulerAnglesHint: {x: 43.204, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 47.99, y: 180, z: 0}
 --- !u!199 &426663117
 ParticleSystemRenderer:
   serializedVersion: 7
@@ -1605,8 +1605,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 1, g: 0.97245157, b: 0.70754707, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      minColor: {r: 1, g: 0.97245157, b: 0.70754707, a: 0.30980393}
+      maxColor: {r: 1, g: 1, b: 1, a: 0.45882353}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -2114,8 +2114,8 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 22359
-        atime2: 40092
+        atime1: 7582
+        atime2: 22616
         atime3: 65535
         atime4: 0
         atime5: 0
