@@ -10,10 +10,8 @@ public class RowanPlaneScript : MonoBehaviour
     public float maxPropellerSpeed;
     public float propellerSpeed;
     [Header("Plane")]
-    public float speedIncrement;
     public float maxSpeed;
     float speed = 100;
-    public float turnSpeed;
     public float rollSpeed;
     public float tiltSpeed;
     Vector3 turn = Vector3.zero;

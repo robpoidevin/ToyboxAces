@@ -10223,6 +10223,7 @@ GameObject:
   - component: {fileID: 1837573411}
   - component: {fileID: 1837573410}
   - component: {fileID: 1837573415}
+  - component: {fileID: 1837573417}
   m_Layer: 0
   m_Name: GDWIII_MitsubishiA6MZero_Material (1)
   m_TagString: Player
@@ -10355,7 +10356,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837573408}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6df5af50b0eedcb4ba2533ac1ddf75b5, type: 3}
   m_Name: 
@@ -10363,13 +10364,34 @@ MonoBehaviour:
   propeller: {fileID: 16884709}
   maxPropellerSpeed: 10
   propellerSpeed: 0
-  speedIncrement: 1
   maxSpeed: 1
-  turnSpeed: 100
   rollSpeed: 0
   tiltSpeed: 0
   speedLines: {fileID: 1583805511}
   speedLineThreshold: 2
+--- !u!114 &1837573417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837573408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0bf053b6e6bf5a41b9d9ec37523221e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlaneScript
+  isNormie: 0
+  propeller: {fileID: 16884709}
+  maxPropellerSpeed: 10
+  propellerSpeed: 0
+  maxSpeed: 1
+  speed: 100
+  turnSpeed: 100
+  rollSpeed: 0
+  tiltSpeed: 0
+  speedLines: {fileID: 1583805511}
+  speedLineThreshold: 185
 --- !u!1 &1839087124
 GameObject:
   m_ObjectHideFlags: 0
