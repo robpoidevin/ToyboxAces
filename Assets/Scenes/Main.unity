@@ -4465,7 +4465,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -4491,6 +4491,8 @@ MonoBehaviour:
   turnSpeed: 100
   rollSpeed: 0
   tiltSpeed: 0
+  speedLines: {fileID: 0}
+  speedLineThreshold: 2
 --- !u!4 &1020965631
 Transform:
   m_ObjectHideFlags: 0
@@ -8965,9 +8967,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3543608657227131463, guid: b997ef2344d25fd4db0c8e237a8e8a50, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1832875763}
-    - targetCorrespondingSourceObject: {fileID: 3543608657227131463, guid: b997ef2344d25fd4db0c8e237a8e8a50, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1832875770}
     - targetCorrespondingSourceObject: {fileID: 6985757709850586527, guid: b997ef2344d25fd4db0c8e237a8e8a50, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1832875762}
@@ -9497,18 +9496,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.017769277
   m_Center: {x: 0.09723293, y: -0.07936483, z: 0.0142632965}
---- !u!114 &1832875770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681778677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44b1303a9e31745489f0dc07ab15a110, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WinCondition
 --- !u!1 &1881698131
 GameObject:
   m_ObjectHideFlags: 0
