@@ -127,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RingScore
   trigger: {fileID: 3831347149916005998}
   triggered: 0
+  scoreMaterial: {fileID: 2100000, guid: 9803eac361353b14d9a8365247b44ee3, type: 2}
 --- !u!1 &4178175299247121065
 GameObject:
   m_ObjectHideFlags: 0
