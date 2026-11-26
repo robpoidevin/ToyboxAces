@@ -95,10 +95,6 @@ Shader "Custom/GeneralOpaque"
             {
                 Varyings OUT;
                 
-                //idk if these are needed but
-                VertexPositionInputs posInputs = GetVertexPositionInputs(IN.positionOS.xyz);
-                VertexNormalInputs normalInputs = GetVertexNormalInputs(IN.normalOS.xyz);
-                
                 OUT.positionHCS = TransformObjectToHClip(IN.positionOS.xyz);
                 OUT.uv = IN.uv;
                 OUT.normalWS = TransformObjectToWorldNormal(IN.normalOS.xyz);

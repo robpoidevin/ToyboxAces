@@ -101,7 +101,7 @@ Material:
     - _DefaultLightingMode: 2
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DiffuseMultiplier: 1.5
+    - _DiffuseMultiplier: 2
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
