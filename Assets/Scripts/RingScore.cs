@@ -4,6 +4,8 @@ public class RingScore : MonoBehaviour
 {
     [SerializeField] BoxCollider trigger;
     public bool triggered = false;
+
+    public Material scoreMaterial;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,5 +30,6 @@ public class RingScore : MonoBehaviour
     {
         triggered = true;
         trigger.enabled = false;
+        gameObject.GetComponent<MeshRenderer>().material = scoreMaterial;
     }
 }

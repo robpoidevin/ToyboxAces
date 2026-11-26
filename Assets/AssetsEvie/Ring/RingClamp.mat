@@ -27,7 +27,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _AlbedoMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 2a6881866dda5c34788f78afd1628865, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -63,11 +63,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 78ab2a6b03c485e43b4de7bbf9850f00, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c549c5da302092c48824034efffa1279, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -79,7 +79,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SmoothnessMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 78ab2a6b03c485e43b4de7bbf9850f00, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -118,18 +118,18 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _GlowScale: 1
+    - _GlowScale: 0.5
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _PrimaryVariationFrequency: 0
-    - _PrimaryVariationScale: 0.0001
-    - _PrimaryWidth: 0.0006
+    - _PrimaryVariationScale: 0.0002
+    - _PrimaryWidth: 0.001
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _ScreenSpaceReflections: 1
     - _ScreenSpaceReflectionsContributeTransparent: 1
-    - _SecondaryWidth: 0.0012
+    - _SecondaryWidth: 0.002
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

@@ -20,12 +20,15 @@ public class PlaneScript : MonoBehaviour
     float pitch;
     float yaw;
     float roll;
-    
+    [Header("HUD")]
+    public GameObject speedLines;
+    public float speedLineThreshold = 2;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        rollSpeed = 0.05f;
-        tiltSpeed = 0.0007f;
+        rollSpeed = 0.04f;
+        tiltSpeed = 0.0008f;
     }
 
     // Update is called once per frame
@@ -38,11 +41,11 @@ public class PlaneScript : MonoBehaviour
         }
         else
         {
-            Debug.Log("done or not working");
+            //Debug.Log("done or not working");
         }
         propeller.transform.Rotate(new Vector3(0, propellerSpeed, 0));
         //------------------------------
-        Debug.Log(rb.linearVelocity);
+        //Debug.Log(rb.linearVelocity);
 
         pitch = Input.GetAxis("Vertical");
 
@@ -79,7 +82,15 @@ public class PlaneScript : MonoBehaviour
             speed += 1f;
         }
         //transform.Rotate(new Vector3(0, 0, 0.1f));
-        Debug.Log(rb.angularVelocity.z);
+        //Debug.Log(rb.angularVelocity.z);
+        if (speed < speedLineThreshold) 
+        { 
+            speedLines.SetActive(false); 
+        } 
+        else 
+        { 
+            speedLines.SetActive(true); 
+        }
     }
     private void FixedUpdate()
     {
