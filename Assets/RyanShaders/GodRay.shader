@@ -9,6 +9,7 @@ Shader "Custom/GodRay"
         [HDR] _EmissionColor("Emission Color", Color) = (1,1,1,1)
         [HDR] _FresnelColor("Fresnel Emission Color", Color) = (1,1,1,1)
         _FresnelPower("Fresnel Power", Float) = 1
+        _TopHeight("Top Height", Float) = 1
         // add transparency
         // add color 
         // add color gradient
@@ -58,6 +59,7 @@ Shader "Custom/GodRay"
                 half4 _EmissionColor;
                 half4 _FresnelColor;
                 half _FresnelPower;
+                half _TopHeight;
             CBUFFER_END
 
             Varyings vert(Attributes IN)
@@ -81,7 +83,10 @@ Shader "Custom/GodRay"
                 float fresnel = pow(1.0 - NdotV, _FresnelPower);
                 
                 color = color + (_FresnelColor * fresnel);
-                return half4(color.rgb, _Transparency);
+                
+                float transparencyPositionMod = IN.positionWS.y / _TopHeight;   
+                
+                return half4(color.rgb, _Transparency * transparencyPositionMod);
             }
             ENDHLSL
         }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class LightManager : MonoBehaviour
 {
-    [SerializeField] List<Renderer> lightToggleObjects = new List<Renderer>(); // has all the lit gameobjects that can be toggled
+    [SerializeField] public List<Renderer> lightToggleObjects = new List<Renderer>(); // has all the lit gameobjects that can be toggled
     
     void Update()
     {

@@ -651,7 +651,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &192478814
 Transform:
@@ -722,7 +722,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
+  m_ReceiveGI: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -5949,7 +5949,7 @@ ParticleSystemRenderer:
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
+  m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
@@ -12592,13 +12592,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1881698131}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.04214014, y: 0.9163418, z: -0.39817044, w: -0.001514776}
+  m_LocalRotation: {x: 0.042252067, y: 0.9163424, z: -0.39815798, w: -0.0012571596}
   m_LocalPosition: {x: 11.05, y: 25.82, z: 53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 46.852, y: 183.045, z: 6.586}
+  m_LocalEulerAnglesHint: {x: 46.852, y: 183.013, z: 6.586}
 --- !u!1 &1915813490
 GameObject:
   m_ObjectHideFlags: 0

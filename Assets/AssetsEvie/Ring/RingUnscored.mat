@@ -150,9 +150,9 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0.11765022, g: 1.5659354, b: 2.309434, a: 1}
-    - _GlowColor: {r: 1.3380715, g: 0.114590555, b: 1.8238995, a: 1}
-    - _PrimaryOutline: {r: 0, g: 0, b: 0, a: 1}
-    - _SecondaryOutline: {r: 1, g: 1, b: 1, a: 1}
+    - _GlowColor: {r: 3.0928435, g: 0.50336426, b: 4.104359, a: 1}
+    - _PrimaryOutline: {r: 1, g: 0.46855342, b: 0.9270694, a: 1}
+    - _SecondaryOutline: {r: 0.05468527, g: 0.49685526, b: 0.34272963, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Tint: {r: 1, g: 0, b: 0, a: 1}
     - _UvOffset: {r: 0, g: 0, b: 0, a: 0}

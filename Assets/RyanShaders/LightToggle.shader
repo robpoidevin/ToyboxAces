@@ -22,6 +22,9 @@ Shader "Custom/LightToggle"
         //stuff to make hdr color effect work
         [HDR] _GlowColor("Glow Color", Color) = (1,1,1,1)
         _GlowPower("Glow Power", Float) = 1
+        
+        //flag to disable bump maps
+        _IsBumpy("BumpMapEnabled", Float) = 1
     }
 
     SubShader
@@ -83,6 +86,7 @@ Shader "Custom/LightToggle"
                 half _GlowPower;
                 half _Shininess;
                 half4 _SpecColor;
+                half _IsBumpy;
             CBUFFER_END
 
             Varyings vert(Attributes IN)
@@ -108,12 +112,19 @@ Shader "Custom/LightToggle"
             {
                 //setting the diffuse and bump maps
                 half3 color = SAMPLE_TEXTURE2D(_DiffuseMap, sampler_DiffuseMap, IN.uv);
-                half3 normalTS = UnpackNormal(SAMPLE_TEXTURE2D(_BumpMap, sampler_BumpMap, IN.uv));
-                normalTS.xy *= _BumpScale;
                 
-                //tangent space normal to world space 
-                half3x3 TBN = half3x3(IN.tangentWS, IN.biTangentWS, IN.normalWS);
-                half3 normalWS = normalize(mul(normalTS, TBN));
+                half3 normalWS = IN.normalWS;
+                
+                if (_IsBumpy == 1)
+                {
+                    half3 normalTS = UnpackNormal(SAMPLE_TEXTURE2D(_BumpMap, sampler_BumpMap, IN.uv));
+                    normalTS.xy *= _BumpScale;
+                
+                    //tangent space normal to world space 
+                    half3x3 TBN = half3x3(IN.tangentWS, IN.biTangentWS, IN.normalWS);
+                    normalWS = normalize(mul(normalTS, TBN));
+                }
+                
                 
                 half3 colorMultiplier = 1;
                 half3 colorAddition = 0;
