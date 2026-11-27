@@ -118,7 +118,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _GradientScale: 13
+    - _GradientScale: 8
     - _MaskSoftnessX: 0
     - _MaskSoftnessY: 0
     - _Metallic: 0
@@ -129,9 +129,9 @@ Material:
     - _PerspectiveFilter: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _ScaleRatioA: 0.9230769
+    - _ScaleRatioA: 0.875
     - _ScaleRatioB: 1
-    - _ScaleRatioC: 0.75
+    - _ScaleRatioC: 0.7109375
     - _ScaleX: 1
     - _ScaleY: 1
     - _ScreenSpaceReflections: 1

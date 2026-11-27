@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlaneScript : MonoBehaviour
 {
@@ -22,7 +23,8 @@ public class PlaneScript : MonoBehaviour
     float roll;
     [Header("HUD")]
     public GameObject speedLines;
-    public float speedLineThreshold = 2;
+    public float speedLineLowerBound = 145;
+    public float speedLineUpperBound = 185;
 
     void Awake()
     {
@@ -83,13 +85,17 @@ public class PlaneScript : MonoBehaviour
         }
         //transform.Rotate(new Vector3(0, 0, 0.1f));
         //Debug.Log(rb.angularVelocity.z);
-        if (speed < speedLineThreshold) 
+        if (speed < speedLineLowerBound) 
         { 
             speedLines.SetActive(false); 
         } 
         else 
         { 
-            speedLines.SetActive(true); 
+            speedLines.SetActive(true);
+            Color alpha = new Color(255, 255, 255);
+            alpha.a = (speed - speedLineLowerBound) / (speedLineUpperBound - speedLineLowerBound);
+            if (alpha.a > 1) alpha.a = 1;
+            speedLines.GetComponent<Image>().color = alpha;
         }
     }
     private void FixedUpdate()
